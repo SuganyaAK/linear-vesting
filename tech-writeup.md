@@ -246,7 +246,9 @@ and the beneficiary's address is specified, which is the only address that can c
 
 ### Collect token with Partial-Unlock Redeemer
 
-// to be done
+With `PartialUnlock` redeemer, after `firstUnlockPossibleAfter` and before `vestingPeriodEnd`, beneficiary can claim the vested asset in proportion to the time that has passed after `vestingPeriodStart`. The remaining assets needs to be sent back to the validator address with the original datum intact otherwise the validation will fail.
+
+![lock-tokens](/assets/gifs/partialUnlock.gif)
 
 ### Collect all tokens with Full-Unlock Redeemer
 
