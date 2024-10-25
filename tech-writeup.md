@@ -252,7 +252,9 @@ With `PartialUnlock` redeemer, after `firstUnlockPossibleAfter` and before `vest
 
 ### Collect all tokens with Full-Unlock Redeemer
 
-// To be done
+After the `vestingPeriodEnd`, beneficiary can claim the entire remaining balance at the UTxO using FullUnlock redeemer.
+
+![lock-tokens](/assets/gifs/fullUnlock.gif)
 
 ## Contract API endpoint
 
