@@ -78,6 +78,9 @@ Download the Git repository:
 git clone https://github.com/Anastasia-Labs/linear-vesting.git
 ```
 
+Fork the Git repository:
+--add actions--
+
 Navigate to the repository directory:
 
 ```sh
@@ -131,7 +134,7 @@ make test
 pvalidateVestingScript :: Term s (PVestingDatum :--> PVestingRedeemer :--> PScriptContext :--> PUnit)
 ```
 
-The linear vesting validator is not a parameterized one. All its customization needs are fulfilled by the datum (`VestingDatum`) of the locked UTxO.
+The linear vesting validator does not have parameters set. All its customization needs are fulfilled by the datum (`VestingDatum`) of the locked UTxO.
 
 ### Datum
 
