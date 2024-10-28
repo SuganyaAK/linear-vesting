@@ -7,17 +7,15 @@
 3. [Building and Testing](#building-and-testing)
 4. [Understanding the Linear Vesting Contract](#understanding-the-linear-vesting-contract)
 5. [Exporting Plutarch Scripts](#exporting-plutarch-scripts)
-6. [Transaction Building](#transaction-building)
-7. [Contract API Endpoints](#contract-api-endpoints)
+6. [Building and Testing OffChain](#building-and-testing-offchain)
+7. [Transaction Building](#transaction-building)
 8. [Additional Resources](#additional-resources)
-9. [Contributing](#contributing)
-10. [License](#license)
 
 # Linear Vesting Contract - Getting Started
 
 ## Introduction
 
-The Linear Vesting contract provides a mechanism for releasing Cardano Native Tokens gradually over a specified timeframe. It's useful for token compensation, DAO treasury vesting, and installment payment plans.
+The Linear Vesting contract provides a mechanism for releasing Cardano Native Tokens gradually over a specified timeframe, with customization options to fit different requirements. It's useful for token compensation, DAO treasury vesting, and installment payment plans.
 
 ## Getting Started
 
@@ -110,21 +108,6 @@ Execute the test suite:
 make test
 ```
 
-## Using the Contract
-
-1. Lock Tokens:
-
-- Send tokens to the smart contract
-- Set vesting period start and end dates
-- Set number of installments and first unlock date
-- Specify beneficiary address
-
-2. Claim Tokens:
-
-- Beneficiary can claim vested tokens between start and end dates
-- Use `PartialUnlock` redeemer for partial claims
-- Use `FullUnlock` redeemer after vesting period ends
-
 ## Understanding the Linear Vesting Contract
 
 ```hs
@@ -204,7 +187,7 @@ When using the `PartialUnlock` redeemer, the following conditions and actions ap
 
 #### Validation Requirements:
 
-1. The transaction must occur within the specified time window, between `firstUnlockPossibleAfter` and `vestingPeriodEnd`..
+1. The transaction must occur within the specified time window, between `firstUnlockPossibleAfter` and `vestingPeriodEnd`.
 2. The claimed amount must not exceed the proportionally vested amount.
 3. Unclaimed assets must be properly returned with the original datum.
 
@@ -231,9 +214,39 @@ Using the `FullUnlock` redeemer signals the intent to complete the vesting proce
 
 Once the script is compiled, locate the generated serialised .json file in your project’s output directory. This file contains the bytecode that will be deployed on the Cardano blockchain. You can copy and paste the contents of the file into the offchain directory.
 
-## Transaction Building
+## Building and Testing OffChain
 
-// add building and testing for off chain seperately
+### Install package
+
+```sh
+npm install @anastasia-labs/direct-offer-offchain
+```
+
+or
+
+```sh
+pnpm install @anastasia-labs/direct-offer-offchain
+```
+
+### Local Build
+
+In the main directory
+
+```
+pnpm run build
+```
+
+### Test framework
+
+https://github.com/vitest-dev/vitest
+
+### Running Tests
+
+```sh
+pnpm test
+```
+
+## Transaction Building
 
 ### Lock Assets at the Vesting Contract
 
@@ -256,17 +269,12 @@ After the `vestingPeriodEnd`, beneficiary can claim the entire remaining balance
 
 ![lock-tokens](/assets/gifs/fullUnlock.gif)
 
-## Contract API endpoint
-
-// Elaborate about how Maestro API works
-
 ## Additional Resources
 
-// Explain about demeter
-// link to Anastasia Labs git book
+### Demeter Workspace
 
-- Use the Demeter Workspace for a seamless development experience.
+To provide a seamless experience for running and trying out our application, click the workspace button below. This will start a workspace in Demeter with our repository code automatically cloned.
 
-## License
+[![Code in Workspace](https://demeter.run/code/badge.svg)](https://demeter.run/code?repository=https://github.com/Anastasia-Labs/linear-vesting&template=plutus&size=large)
 
-© 2023 Anastasia Labs. All code is licensed under MIT License.
+There is also a [GitBook](https://anastasia-labs.github.io/production-grade-dapps/linear_vesting) available for more details.
