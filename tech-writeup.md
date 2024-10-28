@@ -219,13 +219,13 @@ Once the script is compiled, locate the generated serialised .json file in your 
 ### Install package
 
 ```sh
-npm install @anastasia-labs/direct-offer-offchain
+npm install @anastasia-labs/linear-vesting-offchain
 ```
 
 or
 
 ```sh
-pnpm install @anastasia-labs/direct-offer-offchain
+pnpm install @anastasia-labs/linear-vesting-offchain
 ```
 
 ### Local Build
